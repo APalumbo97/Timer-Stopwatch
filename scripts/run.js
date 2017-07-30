@@ -1,5 +1,12 @@
-var stopwatch = new Stopwatch(document.querySelector(".stopwatch"), document.querySelector(".laps"));
+/**
+ * Author: Anthony Palumbo
+ * Date: 7-29-2017
+ * Description: Sets up the buttons for the stopwatch and timer.
+ */
 
+/**
+ * Sets up the buttons to control the stopwatch.
+ */
 function initialize() {
     var startBtn = document.createElement("button");
     startBtn.innerHTML = "Start";
@@ -12,5 +19,7 @@ function initialize() {
     document.getElementById("buttons").appendChild(stopBtn);
 
 }
+
+var stopwatch = new Stopwatch(document.querySelector(".stopwatch"), document.querySelector(".laps"));
 
 initialize();
