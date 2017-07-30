@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #00B789;
+    color: white;
+    max-width: 1920px;
+    max-height: 1080px;
+    width: device-width;
+    font-family: Consolas;
+    text-align: center;
+}
+
+.stopwatch {
+    line-height: 40vh;
+    font-size: 20vh;
+}
