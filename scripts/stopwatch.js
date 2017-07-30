@@ -15,7 +15,6 @@ class Stopwatch {
         this.minutes = 0;
         this.seconds = 0;
         this.secondParts = 0;
-        this.laps = [];
         this.running = false;
         this.clock = clock;
         this.lapsObj = lapsObj;
@@ -53,6 +52,20 @@ class Stopwatch {
         this.seconds = 0;
         this.secondParts = 0;
         this.displayText();
+        while (this.lapsObj.lastChild) {
+            this.lapsObj.removeChild(this.lapsObj.lastChild);
+        }
+    }
+
+    /**
+     * Creates a lap and displays it on the page.
+     */
+    createLap() {
+        if (this.running) {
+            var listElement = document.createElement("li");
+            listElement.innerText = this.getTimeString();
+            this.lapsObj.appendChild(listElement);
+        }
     }
 
     /**
@@ -104,11 +117,19 @@ class Stopwatch {
     }
 
     /**
+     * Creates a string for the current time in minutes, seconds, and 1/60ths of a second.
+     * @return - the time as a string
+     */
+    getTimeString() {
+        return this.displayString(this.minutes) + ":" + this.displayString(this.seconds) + ":"
+                               + this.displayString(this.secondParts);
+    }
+
+    /**
      * Sets the text for the clock in HTML.
      */
     displayText() {
-        this.clock.innerText = this.displayString(this.minutes) + ":" + this.displayString(this.seconds) + ":"
-                               + this.displayString(this.secondParts);
+        this.clock.innerText = this.getTimeString();
     }
 
 }

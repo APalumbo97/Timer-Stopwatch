@@ -22,8 +22,13 @@ function initialize() {
     resetBtn.innerHTML = "Reset";
     resetBtn.setAttribute("onClick", "stopwatch.reset();");
     document.getElementById("buttons").appendChild(resetBtn);
+
+    var lapBtn = document.createElement("button");
+    lapBtn.innerHTML = "Lap";
+    lapBtn.setAttribute("onClick", "stopwatch.createLap();");
+    document.getElementById("buttons").appendChild(lapBtn);
 }
 
-var stopwatch = new Stopwatch(document.querySelector(".stopwatch"), document.querySelector(".laps"));
+var stopwatch = new Stopwatch(document.querySelector(".stopwatch"), document.querySelector("#laps"));
 
 initialize();
