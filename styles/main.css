@@ -16,7 +16,35 @@ body {
     text-align: center;
 }
 
-.stopwatch {
+.switch {
+    display: inline-block;
+    font-size: 1em;
+    height: 2em;
+    width: 4em;
+    background: #BDB9A9;
+    border-radius: 1em;
+    margin: 2em;
+}
+
+.switch input {
+    position: absolute;
+    opacity: 0;
+}
+
+.switch div {
+    height: 2em;
+    width: 2em;
+    border-radius: 1em;
+    background: #FFF;
+    box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.3);
+    transition: all 200ms;
+}
+
+.switch input:checked + div {
+    transform: translate3d(100%, 0, 0);
+}
+
+#stopwatch {
     line-height: 40vh;
     font-size: 20vh;
 }
