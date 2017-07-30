@@ -45,6 +45,17 @@ class Stopwatch {
     }
 
     /**
+     * Stops the stopwatch and sets the time to 00:00:00.
+     */
+    reset() {
+        this.stop();
+        this.minutes = 0;
+        this.seconds = 0;
+        this.secondParts = 0;
+        this.displayText();
+    }
+
+    /**
      * Animates the stopwatch as time goes on.
      * @param timestamp - the current time in milliseconds
      */

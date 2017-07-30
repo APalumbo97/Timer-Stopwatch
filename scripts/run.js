@@ -18,6 +18,10 @@ function initialize() {
     stopBtn.setAttribute("onClick", "stopwatch.stop();");
     document.getElementById("buttons").appendChild(stopBtn);
 
+    var resetBtn = document.createElement("button");
+    resetBtn.innerHTML = "Reset";
+    resetBtn.setAttribute("onClick", "stopwatch.reset();");
+    document.getElementById("buttons").appendChild(resetBtn);
 }
 
 var stopwatch = new Stopwatch(document.querySelector(".stopwatch"), document.querySelector(".laps"));
