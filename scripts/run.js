@@ -16,8 +16,9 @@ function initializeTimer() {
     document.body.appendChild(timerDiv);
 
     var inputForm = document.createElement("form");
-    inputForm.setAttribute("onsubmit", "return timer.setTime(this);s");
+    inputForm.setAttribute("onsubmit", "return timer.setTime(this);");
     inputForm.setAttribute("method", "POST");
+    inputForm.setAttribute("id", "inputForm");
 
     var minutesInput = document.createElement("input");
     minutesInput.setAttribute("type", "number");
@@ -33,6 +34,10 @@ function initializeTimer() {
 
     var submitBtn = document.createElement("input");
     submitBtn.setAttribute("type", "submit");
+    submitBtn.style.backgroundColor = "blue";
+    submitBtn.style.color = "white";
+    submitBtn.style.borderRadius = "4px";
+    submitBtn.style.border = "none";
     inputForm.appendChild(submitBtn);
 
     document.body.appendChild(inputForm);
@@ -44,16 +49,19 @@ function initializeTimer() {
     var startBtn = document.createElement("button");
     startBtn.innerHTML = "Start";
     startBtn.setAttribute("onClick", "timer.start();");
+    startBtn.style.background = "green";
     buttonsDiv.appendChild(startBtn);
 
     var pauseBtn = document.createElement("button");
     pauseBtn.innerHTML = "Pause";
     pauseBtn.setAttribute("onClick", "timer.pause();");
+    pauseBtn.style.background = "red";
     buttonsDiv.appendChild(pauseBtn);
 
     var clearBtn = document.createElement("button");
     clearBtn.innerHTML = "Clear";
     clearBtn.setAttribute("onClick", "timer.clear();");
+    clearBtn.style.background = "#494949";
     buttonsDiv.appendChild(clearBtn);
 }
 
@@ -97,21 +105,25 @@ function initializeStopwatch() {
     var startBtn = document.createElement("button");
     startBtn.innerHTML = "Start";
     startBtn.setAttribute("onClick", "stopwatch.start();");
+    startBtn.style.backgroundColor = "#494949";
     buttonsDiv.appendChild(startBtn);
 
     var stopBtn = document.createElement("button");
     stopBtn.innerHTML = "Stop";
     stopBtn.setAttribute("onClick", "stopwatch.stop();");
+    stopBtn.style.backgroundColor = "#494949";
     buttonsDiv.appendChild(stopBtn);
 
     var resetBtn = document.createElement("button");
     resetBtn.innerHTML = "Reset";
     resetBtn.setAttribute("onClick", "stopwatch.reset();");
+    resetBtn.style.backgroundColor = "#494949";
     buttonsDiv.appendChild(resetBtn);
 
     var lapBtn = document.createElement("button");
     lapBtn.innerHTML = "Lap";
     lapBtn.setAttribute("onClick", "stopwatch.createLap();");
+    lapBtn.style.backgroundColor = "#494949";
     buttonsDiv.appendChild(lapBtn);
 }
 

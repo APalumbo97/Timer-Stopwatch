@@ -44,7 +44,7 @@ class Timer {
      * Stops the timer if running and sets the minutes and seconds both to 0.
      */
     clear() {
-        this.running = false;
+        this.pause();
         this.minutes = 0;
         this.seconds = 0;
         this.displayText();
