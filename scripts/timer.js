@@ -16,14 +16,24 @@ class Timer {
 
     start() {
         // TODO
+        alert("START");
+        this.running = true;
     }
 
     pause() {
         // TODO
+        alert("PAUSE");
+        this.running = false;
     }
 
-    reset() {
-        // TODO
+    /**
+     * Stops the timer if running and sets the minutes and seconds both to 0.
+     */
+    clear() {
+        this.running = false;
+        this.minutes = 0;
+        this.seconds = 0;
+        this.displayText();
     }
 
     /**
@@ -32,6 +42,7 @@ class Timer {
      * @return - false, to prevent the page from reloading scripts
      */
     setTime(form) {
+        this.running = false;
         var minutes = form.elements["minutesInput"].value;
         var seconds = form.elements["secondsInput"].value;
 
@@ -47,6 +58,7 @@ class Timer {
         this.minutes = Number(minutes);
         this.seconds = Number(seconds);
         this.displayText();
+        form.reset();
 
         return false;
     }

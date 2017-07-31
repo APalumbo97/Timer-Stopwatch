@@ -44,6 +44,10 @@ body {
     transform: translate3d(100%, 0, 0);
 }
 
+#buttons button {
+    margin: 1em;
+}
+
 #timer {
     line-height: 50vh;
     font-size: 30vh;

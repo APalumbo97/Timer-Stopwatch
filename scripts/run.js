@@ -36,7 +36,25 @@ function initializeTimer() {
     inputForm.appendChild(submitBtn);
 
     document.body.appendChild(inputForm);
-    // TODO
+
+    var buttonsDiv = document.createElement("div");
+    buttonsDiv.setAttribute("id", "buttons");
+    document.body.appendChild(buttonsDiv);
+
+    var startBtn = document.createElement("button");
+    startBtn.innerHTML = "Start";
+    startBtn.setAttribute("onClick", "timer.start();");
+    buttonsDiv.appendChild(startBtn);
+
+    var pauseBtn = document.createElement("button");
+    pauseBtn.innerHTML = "Pause";
+    pauseBtn.setAttribute("onClick", "timer.pause();");
+    buttonsDiv.appendChild(pauseBtn);
+
+    var clearBtn = document.createElement("button");
+    clearBtn.innerHTML = "Clear";
+    clearBtn.setAttribute("onClick", "timer.clear();");
+    buttonsDiv.appendChild(clearBtn);
 }
 
 /**
@@ -46,6 +64,7 @@ function removeTimer() {
     // TODO
     document.body.removeChild(document.getElementById("timer"));
     document.body.removeChild(document.getElementsByTagName("form")[0]);
+    document.body.removeChild(document.getElementById("buttons"));
     timer = null;
 }
 
@@ -78,22 +97,22 @@ function initializeStopwatch() {
     var startBtn = document.createElement("button");
     startBtn.innerHTML = "Start";
     startBtn.setAttribute("onClick", "stopwatch.start();");
-    document.getElementById("buttons").appendChild(startBtn);
+    buttonsDiv.appendChild(startBtn);
 
     var stopBtn = document.createElement("button");
     stopBtn.innerHTML = "Stop";
     stopBtn.setAttribute("onClick", "stopwatch.stop();");
-    document.getElementById("buttons").appendChild(stopBtn);
+    buttonsDiv.appendChild(stopBtn);
 
     var resetBtn = document.createElement("button");
     resetBtn.innerHTML = "Reset";
     resetBtn.setAttribute("onClick", "stopwatch.reset();");
-    document.getElementById("buttons").appendChild(resetBtn);
+    buttonsDiv.appendChild(resetBtn);
 
     var lapBtn = document.createElement("button");
     lapBtn.innerHTML = "Lap";
     lapBtn.setAttribute("onClick", "stopwatch.createLap();");
-    document.getElementById("buttons").appendChild(lapBtn);
+    buttonsDiv.appendChild(lapBtn);
 }
 
 /**
