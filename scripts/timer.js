@@ -6,24 +6,38 @@
 
 class Timer {
 
+    /**
+     * Sets up a Timer object.
+     * @param clock - the HTML object that contains the clock text
+     */
     constructor(clock) {
         this.minutes = 0;
         this.seconds = 0;
         this.running = false;
         this.clock = clock;
+        this.lastTime = null;
         this.displayText();
     }
 
+    /**
+     * Starts the timer.
+     */
     start() {
-        // TODO
-        alert("START");
-        this.running = true;
+        if (!this.running) {
+            if (this.lastTime == null) {
+                this.lastTime = performance.now();
+            }
+            this.running = true;
+            requestAnimationFrame(this.step.bind(this));
+        }
     }
 
+    /**
+     * Pauses the timer.
+     */
     pause() {
-        // TODO
-        alert("PAUSE");
         this.running = false;
+        this.lastTime = null;
     }
 
     /**
@@ -34,6 +48,45 @@ class Timer {
         this.minutes = 0;
         this.seconds = 0;
         this.displayText();
+    }
+
+    /**
+     * Animates the timer as time goes on.
+     * @param timestamp - the current time in milliseconds
+     */
+    step(timestamp) {
+        if (!this.running) {
+            return;
+        }
+        if (this.incrementTime(timestamp - this.lastTime)) {
+            this.lastTime = timestamp;
+        }
+        this.displayText();
+        if (this.minutes != 0 || this.seconds != 0) {
+            requestAnimationFrame(this.step.bind(this));
+        } else {
+            alert("The time is up.");
+        }
+    }
+
+    /**
+     * Increments the number of seconds once 1000 milliseconds has passed.
+     * @param elapsedTime - the amount of time that has passed
+     * @return - true if the time changed, false if less than 1000ms has passed or the time is up
+     */
+    incrementTime(elapsedTime) {
+        if (elapsedTime > 1000) {
+            this.seconds--;
+            if (this.seconds == 0 && this.minutes == 0) {
+                this.pause();
+                return false;
+            } else if (this.seconds < 0) {
+                this.seconds = 59;
+                this.minutes--;
+            }
+            return true;
+        }
+        return false;
     }
 
     /**

@@ -7,7 +7,7 @@
 class Stopwatch {
 
     /**
-     * Setups up a Stopwatch object.
+     * Sets up a Stopwatch object.
      * @param clock - the HTML object that contains the clock text
      * @param lapsObj - the HTML object where the laps for the stopwatch will go
      */

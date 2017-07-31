@@ -61,7 +61,7 @@ function initializeTimer() {
  * Removes the timer HTML elements from the page.
  */
 function removeTimer() {
-    // TODO
+    timer.clear();
     document.body.removeChild(document.getElementById("timer"));
     document.body.removeChild(document.getElementsByTagName("form")[0]);
     document.body.removeChild(document.getElementById("buttons"));
