@@ -11,6 +11,31 @@ var stopwatch;
  * Sets up the timer controls.
  */
 function initializeTimer() {
+    var timerDiv = document.createElement("div");
+    timerDiv.setAttribute("id", "timer");
+    document.body.appendChild(timerDiv);
+
+    var inputForm = document.createElement("form");
+    inputForm.setAttribute("onsubmit", "return timer.setTime(this);s");
+    inputForm.setAttribute("method", "POST");
+
+    var minutesInput = document.createElement("input");
+    minutesInput.setAttribute("type", "number");
+    minutesInput.setAttribute("name", "minutesInput");
+    inputForm.innerHTML += "Minutes: ";
+    inputForm.appendChild(minutesInput);
+
+    var secondsInput = document.createElement("input");
+    secondsInput.setAttribute("type", "number");
+    secondsInput.setAttribute("name", "secondsInput");
+    inputForm.innerHTML += "Seconds: ";
+    inputForm.appendChild(secondsInput);
+
+    var submitBtn = document.createElement("input");
+    submitBtn.setAttribute("type", "submit");
+    inputForm.appendChild(submitBtn);
+
+    document.body.appendChild(inputForm);
     // TODO
 }
 
@@ -19,6 +44,8 @@ function initializeTimer() {
  */
 function removeTimer() {
     // TODO
+    document.body.removeChild(document.getElementById("timer"));
+    document.body.removeChild(document.getElementsByTagName("form")[0]);
     timer = null;
 }
 
@@ -27,8 +54,9 @@ function removeTimer() {
  */
 function switchToTimer() {
     removeStopwatch();
+    document.body.style.backgroundColor = "#FF3F3F";
     initializeTimer();
-    timer = new Timer();
+    timer = new Timer(document.querySelector("#timer"));
 }
 
 /**
@@ -84,6 +112,7 @@ function removeStopwatch() {
  */
 function switchToStopwatch() {
     removeTimer();
+    document.body.style.backgroundColor = "#00B789";
     initializeStopwatch();
     stopwatch = new Stopwatch(document.querySelector("#stopwatch"), document.querySelector("#laps"));
 }
@@ -99,3 +128,6 @@ function checkBoxClick(checkbox) {
         switchToTimer();
     }
 }
+
+initializeTimer();
+timer = new Timer(document.querySelector("#timer"));
